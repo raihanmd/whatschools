@@ -24,9 +24,7 @@ export default function SidebarContent({
 
   return (
     <Box
-      bg={useColorModeValue("white", "gray.900")}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
+      bg={useColorModeValue(color.lightTheme.sidebar, color.darkTheme.sidebar)}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
@@ -37,10 +35,7 @@ export default function SidebarContent({
         alignItems="center"
         mx="8"
         justifyContent="space-between"
-        color={useColorModeValue(
-          color.lightTheme.primary,
-          color.darkTheme.primary
-        )}
+        color={useColorModeValue(color.primary, color.primary)}
       >
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Logo

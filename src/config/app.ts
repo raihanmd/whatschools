@@ -1,5 +1,5 @@
 const APP_CONFIG = {
-  name: "Whatschools",
+  appName: "Whatschools",
 };
 
 export default APP_CONFIG;

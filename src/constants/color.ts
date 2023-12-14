@@ -1,17 +1,18 @@
 const color = {
+  white: "#FFF",
+  primary: "#07ABF3",
+  primaryHover: "#87CEFA",
   darkTheme: {
-    primary: "#07ABF3",
-    secondary: "#291A6F",
-    tertiary: "#151E45",
+    sidebar: "gray.800",
+    box: "#151E45",
     background: "#050922",
     text: "#E8FEFF",
   },
   lightTheme: {
-    primary: "#07ABF3",
-    secondary: "#000000",
-    tertiary: "#000000",
-    background: "#000000",
-    text: "#000",
+    sidebar: "white",
+    box: "#fff",
+    background: "#e3f5fa",
+    text: "#333",
   },
 };
 

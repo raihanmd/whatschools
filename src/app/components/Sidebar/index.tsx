@@ -18,6 +18,7 @@ import {
 import SidebarContent from "./SidebarContent";
 import MobileNav from "./MobileNav";
 import { LinkItemProps } from "./interfaces/Sidebar";
+import color from "@/constants/color";
 
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },
@@ -30,7 +31,13 @@ const LinkItems: Array<LinkItemProps> = [
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box
+      minH="100vh"
+      bg={useColorModeValue(
+        color.lightTheme.background,
+        color.darkTheme.background
+      )}
+    >
       <SidebarContent
         LinkItems={LinkItems}
         onClose={() => onClose}

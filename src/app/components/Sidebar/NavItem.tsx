@@ -1,8 +1,9 @@
 "use client";
 
-import { Box, Flex, Icon } from "@chakra-ui/react";
+import { Box, Flex, Icon, useColorModeValue } from "@chakra-ui/react";
 
 import { NavItemProps } from "./interfaces/Sidebar";
+import color from "@/constants/color";
 
 export default function NavItem({ icon, children, ...rest }: NavItemProps) {
   return (
@@ -19,8 +20,9 @@ export default function NavItem({ icon, children, ...rest }: NavItemProps) {
         borderRadius="lg"
         role="group"
         cursor="pointer"
+        transition={"all 300ms"}
         _hover={{
-          bg: "cyan.400",
+          bg: useColorModeValue(color.primary, color.primary),
           color: "white",
         }}
         {...rest}
@@ -29,6 +31,7 @@ export default function NavItem({ icon, children, ...rest }: NavItemProps) {
           <Icon
             mr="4"
             fontSize="16"
+            transition={"all 300ms"}
             _groupHover={{
               color: "white",
             }}

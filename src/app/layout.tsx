@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ChakraUIProvider } from "../providers/ChakraUIProvider";
 
 import "@/styles/font.css";
-import Sidebar from "./components/Sidebar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ChakraUIProvider>
-          <Sidebar>{children}</Sidebar>
-        </ChakraUIProvider>
+        <ChakraUIProvider>{children}</ChakraUIProvider>
       </body>
     </html>
   );

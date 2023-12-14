@@ -23,7 +23,7 @@ export default function MobileNav({ onOpen, ...rest }: MobileProps) {
       px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue(color.lightTheme.background, "gray.800")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="flex-start"
@@ -40,10 +40,7 @@ export default function MobileNav({ onOpen, ...rest }: MobileProps) {
         justify={"space-between"}
         align={"center"}
         w={"full"}
-        color={useColorModeValue(
-          color.lightTheme.primary,
-          color.darkTheme.primary
-        )}
+        color={color.primary}
       >
         <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
           Logo
