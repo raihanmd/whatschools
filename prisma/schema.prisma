@@ -16,7 +16,7 @@ enum Roles {
   ADMIN
 }
 
-model Users {
+model users {
   id        String  @id @db.VarChar(14)
   username  String  @unique @db.VarChar(50)
   password  String  @db.VarChar(255)
@@ -26,4 +26,10 @@ model Users {
   token     String? @db.VarChar(255)
   createdAt Int     @db.Int
   lastLogin Int?    @db.Int
+}
+
+model master_mapel {
+  id   String  @id @db.VarChar(14)
+  name String  @unique @db.VarChar(255)
+  code String? @db.VarChar(10)
 }

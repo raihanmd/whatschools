@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `Users` (
+CREATE TABLE `users` (
     `id` VARCHAR(14) NOT NULL,
     `username` VARCHAR(50) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
@@ -10,6 +10,6 @@ CREATE TABLE `Users` (
     `createdAt` INTEGER NOT NULL,
     `lastLogin` INTEGER NULL,
 
-    UNIQUE INDEX `Users_username_key`(`username`),
+    UNIQUE INDEX `users_username_key`(`username`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
