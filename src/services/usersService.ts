@@ -10,7 +10,7 @@ import getUuid from "@/app/utils/getUuid";
 import PREFIX from "@/config/prefix";
 
 const login = async (req: LoginSchema) => {
-  const loginRequest = loginSchema.parse(req);
+  const loginBody = loginSchema.parse(req);
 
   const user = await prisma.users.findFirst({
     where: { username: req.username },
@@ -33,22 +33,22 @@ const login = async (req: LoginSchema) => {
     throw new ResponseError(401, "Username or password wrong");
   }
 
-  loginRequest.token = uuid().toString();
-  loginRequest.lastLogin = getUnixTime();
+  loginBody.token = uuid().toString();
+  loginBody.lastLogin = getUnixTime();
 
   return prisma.users.update({
-    data: { token: loginRequest.token, lastLogin: loginRequest.lastLogin },
+    data: { token: loginBody.token, lastLogin: loginBody.lastLogin },
     //@ts-ignore
-    where: { username: loginRequest.username },
+    where: { username: loginBody.username },
     select: { token: true },
   });
 };
 const register = async (req: RegisterSchema) => {
-  const registerRequest = registerSchema.parse(req);
+  const registerBody = registerSchema.parse(req);
 
   const countUser = await prisma.users.count({
     where: {
-      username: registerRequest.username,
+      username: registerBody.username,
     },
   });
 
@@ -56,13 +56,13 @@ const register = async (req: RegisterSchema) => {
     throw new ResponseError(400, "Username already exists");
   }
 
-  registerRequest.id = PREFIX.USER + getUuid();
-  registerRequest.password = await bcrypt.hash(registerRequest.password, 10);
-  registerRequest.createdAt = getUnixTime();
+  registerBody.id = PREFIX.USER + getUuid();
+  registerBody.password = await bcrypt.hash(registerBody.password, 10);
+  registerBody.createdAt = getUnixTime();
 
   return prisma.users.create({
     //@ts-ignore
-    data: registerRequest,
+    data: registerBody,
     select: {
       username: true,
     },
