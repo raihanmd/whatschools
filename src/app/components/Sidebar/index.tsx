@@ -18,7 +18,7 @@ import {
 import SidebarContent from "./SidebarContent";
 import MobileNav from "./MobileNav";
 import { LinkItemProps } from "./interfaces/Sidebar";
-import color from "@/constants/color";
+import color from "@/config/color";
 
 const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },

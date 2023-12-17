@@ -1,19 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import {
   Box,
   Button,
   CloseButton,
   Flex,
-  Text,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import { Link } from "@chakra-ui/next-js";
+import color from "@/config/color";
 import NavItem from "./NavItem";
-import { SidebarProps } from "./interfaces/Sidebar";
-import color from "@/constants/color";
+import appLogo from "../../../../public/app_logo.png";
 import ThemeToggler from "./ThemeToggler";
+import { SidebarProps } from "./interfaces/Sidebar";
 
 export default function SidebarContent({
   LinkItems,
@@ -34,12 +36,13 @@ export default function SidebarContent({
         h="20"
         alignItems="center"
         mx="8"
+        gap={"3"}
         justifyContent="space-between"
         color={useColorModeValue(color.primary, color.primary)}
       >
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
+        <Link href={"/"}>
+          <Image src={appLogo} alt="App Logo" width={40} height={40} />
+        </Link>
         <Button
           onClick={toggleColorMode}
           bg={"none"}

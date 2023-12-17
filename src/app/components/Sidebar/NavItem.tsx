@@ -3,7 +3,7 @@
 import { Box, Flex, Icon, useColorModeValue } from "@chakra-ui/react";
 
 import { NavItemProps } from "./interfaces/Sidebar";
-import color from "@/constants/color";
+import color from "@/config/color";
 
 export default function NavItem({ icon, children, ...rest }: NavItemProps) {
   return (

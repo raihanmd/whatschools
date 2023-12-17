@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import APP_CONFIG from "@/config/app";
 
 export const metadata: Metadata = {
-  title: `Dashboard | ${APP_CONFIG.appName}`,
+  title: `Dashboard | ${APP_CONFIG.APP_NAME}`,
 };
 
 const layout = ({ children }: { children: React.ReactNode }) => {

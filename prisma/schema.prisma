@@ -17,12 +17,13 @@ enum Roles {
 }
 
 model Users {
-  id        String @id @db.VarChar(14)
-  username  String @db.VarChar(50)
-  password  String @db.VarChar(255)
-  firstName String @db.VarChar(50)
-  lastName  String @db.VarChar(50)
+  id        String  @id @db.VarChar(14)
+  username  String  @unique @db.VarChar(50)
+  password  String  @db.VarChar(255)
+  firstName String  @db.VarChar(50)
+  lastName  String  @db.VarChar(50)
   role      Roles
-  createdAt Int    @db.Int
-  lastLogin Int    @db.Int
+  token     String? @db.VarChar(255)
+  createdAt Int     @db.Int
+  lastLogin Int?    @db.Int
 }

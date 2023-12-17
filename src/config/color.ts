@@ -9,7 +9,7 @@ const color = {
     text: "#E8FEFF",
   },
   lightTheme: {
-    sidebar: "white",
+    sidebar: "#fff",
     box: "#fff",
     background: "#e3f5fa",
     text: "#333",

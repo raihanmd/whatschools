@@ -1,6 +1,6 @@
 "use client";
 
-import { theme } from "@/constants/theme";
+import { theme } from "@/config/theme";
 import { ChakraProvider } from "@chakra-ui/react";
 
 export function ChakraUIProvider({ children }: { children: React.ReactNode }) {
