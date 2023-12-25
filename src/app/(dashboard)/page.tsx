@@ -5,24 +5,21 @@ import useAppStore from "@/stores/useAppStore";
 import { Box, Button, Heading, useColorModeValue } from "@chakra-ui/react";
 
 export default function Home() {
-  const { count, increment } = useAppStore();
-
   return (
     <>
       <Heading>Light Mode</Heading>
       <Box
-        bg={useColorModeValue(color.lightTheme.box, color.darkTheme.box)}
+        bg={useColorModeValue(color.light.foreground, color.dark.foreground)}
+        borderColor={useColorModeValue(color.light.border, color.dark.border)}
         p={"3"}
       >
-        <Heading
-          color={useColorModeValue(color.lightTheme.text, color.darkTheme.text)}
-        >
+        <Heading color={useColorModeValue(color.light.text, color.dark.text)}>
           Test
         </Heading>
         <Button
           bg={color.primary}
-          _hover={{ bg: color.primaryHover }}
-          color={color.white}
+          _hover={{ background: color.primaryDark }}
+          color={color.primaryContent}
         >
           Primary
         </Button>

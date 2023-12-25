@@ -1,12 +1,12 @@
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 
-import prisma from "@/connection/prisma";
-import { LoginSchema, RegisterSchema } from "@/interfaces/users.interface";
+import type { LoginSchema, RegisterSchema } from "@/interfaces/users.interface";
 import { loginSchema, registerSchema } from "@/validation/usersSchema";
+import prisma from "@/connection/prisma";
 import ResponseError from "@/errors/responseError";
-import getUnixTime from "@/app/utils/getUnixTime";
-import getUuid from "@/app/utils/getUuid";
+import getUnixTime from "@/utils/getUnixTime";
+import getUuid from "@/utils/getUuid";
 import PREFIX from "@/config/prefix";
 
 const login = async (req: LoginSchema) => {
@@ -34,15 +34,16 @@ const login = async (req: LoginSchema) => {
   }
 
   loginBody.token = uuid().toString();
-  loginBody.lastLogin = getUnixTime();
+  loginBody.last_login = getUnixTime();
 
   return prisma.users.update({
-    data: { token: loginBody.token, lastLogin: loginBody.lastLogin },
+    data: { token: loginBody.token, last_login: loginBody.last_login },
     //@ts-ignore
     where: { username: loginBody.username },
     select: { token: true },
   });
 };
+
 const register = async (req: RegisterSchema) => {
   const registerBody = registerSchema.parse(req);
 
@@ -58,7 +59,7 @@ const register = async (req: RegisterSchema) => {
 
   registerBody.id = PREFIX.USER + getUuid();
   registerBody.password = await bcrypt.hash(registerBody.password, 10);
-  registerBody.createdAt = getUnixTime();
+  registerBody.created_at = getUnixTime();
 
   return prisma.users.create({
     //@ts-ignore

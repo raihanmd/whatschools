@@ -1,15 +1,21 @@
 import { NextResponse } from "next/server";
 
-interface IErrorResponse {
+interface ISuccessResponse {
   statusCode: number;
-  error: any;
+  payload: any;
+  message: string | any;
 }
 
-const ErrorResponse = ({ statusCode, error }: IErrorResponse) => {
+const SuccessResponse = ({
+  statusCode,
+  payload,
+  message,
+}: ISuccessResponse) => {
   return NextResponse.json(
     {
-      statusCode,
-      error,
+      status_code: statusCode,
+      payload,
+      message,
     },
     {
       status: statusCode,
@@ -23,4 +29,4 @@ const ErrorResponse = ({ statusCode, error }: IErrorResponse) => {
   );
 };
 
-export default ErrorResponse;
+export default SuccessResponse;

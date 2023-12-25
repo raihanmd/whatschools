@@ -1,8 +1,8 @@
 import { NextRequest } from "next/server";
 
-import SuccessResponse from "@/app/utils/responses/successResponse";
-import usersService from "@/services/usersService";
-import ErrorHandler from "@/app/utils/handler/errorHandler";
+import usersService from "@/services/users.service";
+import SuccessResponse from "@/utils/responses/successResponse";
+import ErrorHandler from "@/utils/handler/errorHandler";
 
 export async function POST(req: NextRequest) {
   try {

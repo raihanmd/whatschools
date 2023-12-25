@@ -4,16 +4,16 @@ export interface LoginSchema {
   username: string;
   password: string;
   token?: string;
-  lastLogin?: number;
+  last_login?: number;
 }
 
 export interface RegisterSchema {
   username: string;
   password: string;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   role: UserRole;
   id?: string;
-  createdAt?: number;
-  lastLogin?: number;
+  created_at?: number;
+  last_login?: number;
 }

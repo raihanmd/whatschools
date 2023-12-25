@@ -1,20 +1,29 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { useColorMode } from "@chakra-ui/react";
+import { Button, useColorMode } from "@chakra-ui/react";
 
-const ThemeToggler = () => {
-  const { colorMode } = useColorMode();
+import color from "@/config/color";
+
+export default function ThemeToggler() {
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <>
+    <Button
+      onClick={toggleColorMode}
+      bg={"none"}
+      _hover={{
+        background: color.primaryDark,
+      }}
+      rounded={"full"}
+      p={"1"}
+      display={{ base: "none", md: "flex" }}
+    >
       {colorMode === "light" ? (
-        <MoonIcon color={"blue.900"} />
+        <MoonIcon color={color.dark.text} />
       ) : (
         <SunIcon color={"yellow.300"} />
       )}
-    </>
+    </Button>
   );
-};
-
-export default ThemeToggler;
+}

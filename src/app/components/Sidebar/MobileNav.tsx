@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Button,
-  Flex,
-  IconButton,
-  Text,
-  textDecoration,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Flex, IconButton, Text, useColorModeValue } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import Image from "next/image";
 import { Link } from "@chakra-ui/next-js";
@@ -20,15 +12,13 @@ import appLogo from "../../../../public/app_logo.png";
 import APP_CONFIG from "@/config/app";
 
 export default function MobileNav({ onOpen, ...rest }: MobileProps) {
-  const { toggleColorMode } = useColorMode();
-
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
       px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue(color.lightTheme.sidebar, color.darkTheme.sidebar)}
+      bg={color.primary}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="flex-start"
@@ -61,9 +51,7 @@ export default function MobileNav({ onOpen, ...rest }: MobileProps) {
             </Text>
           </Flex>
         </Link>
-        <Button onClick={toggleColorMode} bg={"none"} rounded={"full"} p={"1"}>
-          <ThemeToggler />
-        </Button>
+        <ThemeToggler />
       </Flex>
     </Flex>
   );

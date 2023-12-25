@@ -1,14 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Box,
-  Button,
-  CloseButton,
-  Flex,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, CloseButton, Flex, useColorModeValue } from "@chakra-ui/react";
 
 import { Link } from "@chakra-ui/next-js";
 import color from "@/config/color";
@@ -22,11 +15,9 @@ export default function SidebarContent({
   onClose,
   ...rest
 }: SidebarProps) {
-  const { toggleColorMode } = useColorMode();
-
   return (
     <Box
-      bg={useColorModeValue(color.lightTheme.sidebar, color.darkTheme.sidebar)}
+      bg={color.primary}
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
@@ -43,22 +34,16 @@ export default function SidebarContent({
         <Link href={"/"}>
           <Image src={appLogo} alt="App Logo" width={40} height={40} />
         </Link>
-        <Button
-          onClick={toggleColorMode}
-          bg={"none"}
-          rounded={"full"}
-          p={"1"}
-          display={{ base: "none", md: "flex" }}
-        >
-          <ThemeToggler />
-        </Button>
+        <ThemeToggler />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
+      {/* <Flex gap={"3"} direction={"column"}> */}
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <NavItem key={link.name} icon={link.icon} href={link.href}>
           {link.name}
         </NavItem>
       ))}
+      {/* </Flex> */}
     </Box>
   );
 }

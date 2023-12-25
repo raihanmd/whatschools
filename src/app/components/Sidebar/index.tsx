@@ -21,11 +21,11 @@ import { LinkItemProps } from "./interfaces/Sidebar";
 import color from "@/config/color";
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome },
-  { name: "Trending", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
+  { name: "Home", icon: FiHome, href: "/" },
+  { name: "Trending", icon: FiTrendingUp, href: "/trending" },
+  { name: "Explore", icon: FiCompass, href: "/explore" },
+  { name: "Favourites", icon: FiStar, href: "/favourites" },
+  { name: "Settings", icon: FiSettings, href: "/settings" },
 ];
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
@@ -33,10 +33,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
   return (
     <Box
       minH="100vh"
-      bg={useColorModeValue(
-        color.lightTheme.background,
-        color.darkTheme.background
-      )}
+      bg={useColorModeValue(color.light.background, color.dark.background)}
     >
       <SidebarContent
         LinkItems={LinkItems}

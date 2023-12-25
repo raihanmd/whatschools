@@ -1,29 +1,39 @@
 "use client";
 
 import { Box, Flex, Icon, useColorModeValue } from "@chakra-ui/react";
+import { usePathname } from "next/navigation";
 
 import { NavItemProps } from "./interfaces/Sidebar";
 import color from "@/config/color";
 
-export default function NavItem({ icon, children, ...rest }: NavItemProps) {
+export default function NavItem({
+  icon,
+  children,
+  href,
+  ...rest
+}: NavItemProps) {
+  const pathname: string = usePathname();
+
+  const isActive = pathname === href;
+
   return (
     <Box
       as="a"
-      href="#"
+      href={href}
       style={{ textDecoration: "none" }}
       _focus={{ boxShadow: "none" }}
     >
       <Flex
         align="center"
         p="4"
-        mx="4"
-        borderRadius="lg"
         role="group"
         cursor="pointer"
-        transition={"all 300ms"}
+        transition={"all 100ms"}
+        color={color.primaryContent}
+        bg={isActive ? color.primaryDark : "none"}
         _hover={{
-          bg: useColorModeValue(color.primary, color.primary),
-          color: "white",
+          bg: color.primaryDark,
+          color: color.primaryContent,
         }}
         {...rest}
       >
@@ -31,9 +41,9 @@ export default function NavItem({ icon, children, ...rest }: NavItemProps) {
           <Icon
             mr="4"
             fontSize="16"
-            transition={"all 300ms"}
+            transition={"all 100ms"}
             _groupHover={{
-              color: "white",
+              color: color.primaryContent,
             }}
             as={icon}
           />

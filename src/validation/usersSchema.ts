@@ -15,8 +15,8 @@ export const registerSchema: ToZodObject<RegisterSchema> = z
   .object({
     username: z.string().max(50),
     password: z.string().max(255),
-    firstName: z.string().max(50),
-    lastName: z.string().max(50),
+    first_name: z.string().max(50),
+    last_name: z.string().max(50),
     role: z.nativeEnum(UserRole),
   })
   .strict();

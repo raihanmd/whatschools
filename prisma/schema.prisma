@@ -16,20 +16,62 @@ enum Roles {
   ADMIN
 }
 
+enum BerkasType {
+  REQUIRED
+  OPTIONAL
+}
+
 model users {
-  id        String  @id @db.VarChar(14)
-  username  String  @unique @db.VarChar(50)
-  password  String  @db.VarChar(255)
-  firstName String  @db.VarChar(50)
-  lastName  String  @db.VarChar(50)
-  role      Roles
-  token     String? @db.VarChar(255)
-  createdAt Int     @db.Int
-  lastLogin Int?    @db.Int
+  id         String  @id @db.VarChar(14)
+  username   String  @unique @db.VarChar(50)
+  password   String  @db.VarChar(255)
+  first_name String  @db.VarChar(50)
+  last_name  String  @db.VarChar(50)
+  role       Roles
+  token      String? @db.VarChar(255)
+  created_at Int     @db.Int
+  last_login Int?    @db.Int
 }
 
 model master_mapel {
-  id   String  @id @db.VarChar(14)
-  name String  @unique @db.VarChar(255)
-  code String? @db.VarChar(10)
+  id      String  @id @db.VarChar(14)
+  name    String  @unique @db.VarChar(255)
+  code    String? @db.VarChar(10)
+  teacher String  @db.VarChar(255)
+}
+
+model master_berkas {
+  id         String     @id @db.VarChar(14)
+  name       String     @db.VarChar(50)
+  type       BerkasType
+  created_at DateTime   @default(now()) @db.Date
+}
+
+model ppdb_pendatar {
+  id              String   @id @db.VarChar(14)
+  ppdb_periode_id String   @db.VarChar(14)
+  full_name       String   @db.VarChar(255)
+  no_hp           Int      @db.Int
+  created_at      DateTime @default(now()) @db.Date
+
+  ppdb_periode ppdb_periode  @relation(fields: [ppdb_periode_id], references: [id])
+  ppdb_berkas  ppdb_berkas[]
+}
+
+model ppdb_periode {
+  id          String   @id @db.VarChar(14)
+  code        String   @unique @db.VarChar(50)
+  description String   @db.Text
+  start_date  DateTime @db.Date
+  end_date    DateTime @db.Date
+
+  ppdb_pendatar ppdb_pendatar[]
+}
+
+model ppdb_berkas {
+  id                String   @id @db.VarChar(14)
+  ppdb_pendaftar_id String   @db.VarChar(14)
+  created_at        DateTime @default(now()) @db.Date
+
+  ppdb_pendaftar ppdb_pendatar @relation(fields: [ppdb_pendaftar_id], references: [id])
 }
