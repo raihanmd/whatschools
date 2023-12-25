@@ -46,7 +46,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full"
+        size="xs"
       >
         <DrawerContent>
           <SidebarContent LinkItems={LinkItems} onClose={onClose} />

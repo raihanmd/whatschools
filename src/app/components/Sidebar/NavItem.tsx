@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Flex, Icon, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Icon } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 
 import { NavItemProps } from "./interfaces/Sidebar";

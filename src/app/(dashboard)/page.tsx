@@ -1,7 +1,6 @@
 "use client";
 
 import color from "@/config/color";
-import useAppStore from "@/stores/useAppStore";
 import { Box, Button, Heading, useColorModeValue } from "@chakra-ui/react";
 
 export default function Home() {

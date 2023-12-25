@@ -1,7 +1,15 @@
+import { Metadata } from "next";
+
 import Navbar from "../components/Navbar";
 
-const page = () => {
-  return <Navbar />;
+export const metadata: Metadata = {
+  title: "PPDB Whatschool",
 };
 
-export default page;
+export default function page() {
+  return (
+    <div className="container">
+      <Navbar />
+    </div>
+  );
+}

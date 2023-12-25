@@ -7,7 +7,7 @@ import { Link } from "@chakra-ui/next-js";
 import color from "@/config/color";
 import NavItem from "./NavItem";
 import appLogo from "../../../../public/app_logo.png";
-import ThemeToggler from "./ThemeToggler";
+import ThemeToggler from "../ThemeToggler";
 import { SidebarProps } from "./interfaces/Sidebar";
 
 export default function SidebarContent({
@@ -37,13 +37,11 @@ export default function SidebarContent({
         <ThemeToggler />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {/* <Flex gap={"3"} direction={"column"}> */}
       {LinkItems.map((link) => (
         <NavItem key={link.name} icon={link.icon} href={link.href}>
           {link.name}
         </NavItem>
       ))}
-      {/* </Flex> */}
     </Box>
   );
 }

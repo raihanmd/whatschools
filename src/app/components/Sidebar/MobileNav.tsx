@@ -5,11 +5,11 @@ import { FiMenu } from "react-icons/fi";
 import Image from "next/image";
 import { Link } from "@chakra-ui/next-js";
 
-import { MobileProps } from "./interfaces/Sidebar";
 import color from "@/config/color";
-import ThemeToggler from "./ThemeToggler";
 import appLogo from "../../../../public/app_logo.png";
+import { MobileProps } from "./interfaces/Sidebar";
 import APP_CONFIG from "@/config/app";
+import ThemeToggler from "../ThemeToggler";
 
 export default function MobileNav({ onOpen, ...rest }: MobileProps) {
   return (
