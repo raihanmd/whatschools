@@ -2,7 +2,7 @@
 
 import { Box, Stack, Text } from "@chakra-ui/react";
 
-import { NavItem } from "./interfaces";
+import type { NavItem } from "./types";
 import color from "@/config/color";
 
 export default function MobileNavItem({ label, href }: NavItem) {

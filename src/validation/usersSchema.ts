@@ -1,8 +1,8 @@
 import { z } from "zod";
 
+import type { LoginSchema, RegisterSchema } from "@/types/users.type";
 import UserRole from "@/enums/UserRole";
-import { LoginSchema, RegisterSchema } from "@/interfaces/users.interface";
-import { ToZodObject } from "@/interfaces/zod.interface";
+import { ToZodObject } from "@/types/zod.type";
 
 export const loginSchema: ToZodObject<LoginSchema> = z
   .object({

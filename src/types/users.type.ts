@@ -1,13 +1,13 @@
 import UserRole from "@/enums/UserRole";
 
-export interface LoginSchema {
+export type LoginSchema = {
   username: string;
   password: string;
   token?: string;
   last_login?: number;
-}
+};
 
-export interface RegisterSchema {
+export type RegisterSchema = {
   username: string;
   password: string;
   first_name: string;
@@ -16,4 +16,4 @@ export interface RegisterSchema {
   id?: string;
   created_at?: number;
   last_login?: number;
-}
+};

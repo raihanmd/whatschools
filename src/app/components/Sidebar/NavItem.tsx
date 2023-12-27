@@ -3,7 +3,7 @@
 import { Box, Flex, Icon } from "@chakra-ui/react";
 import { usePathname } from "next/navigation";
 
-import { NavItemProps } from "./interfaces/Sidebar";
+import type { NavItemProps } from "./types";
 import color from "@/config/color";
 
 export default function NavItem({

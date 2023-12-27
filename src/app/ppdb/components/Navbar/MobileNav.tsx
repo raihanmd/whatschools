@@ -2,7 +2,7 @@
 
 import { Stack } from "@chakra-ui/react";
 
-import { MobileNavProps } from "./interfaces";
+import type { MobileNavProps } from "./types";
 import MobileNavItem from "./MobileNavItem";
 import color from "@/config/color";
 

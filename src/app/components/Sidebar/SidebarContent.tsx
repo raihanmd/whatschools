@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import { Box, CloseButton, Flex, useColorModeValue } from "@chakra-ui/react";
-
 import { Link } from "@chakra-ui/next-js";
+
+import type { SidebarProps } from "./types";
 import color from "@/config/color";
 import NavItem from "./NavItem";
 import appLogo from "../../../../public/app_logo.png";
 import ThemeToggler from "../ThemeToggler";
-import { SidebarProps } from "./interfaces/Sidebar";
 
 export default function SidebarContent({
   LinkItems,

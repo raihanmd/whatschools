@@ -5,9 +5,9 @@ import { FiMenu } from "react-icons/fi";
 import Image from "next/image";
 import { Link } from "@chakra-ui/next-js";
 
+import type { MobileProps } from "./types";
 import color from "@/config/color";
 import appLogo from "../../../../public/app_logo.png";
-import { MobileProps } from "./interfaces/Sidebar";
 import APP_CONFIG from "@/config/app";
 import ThemeToggler from "../ThemeToggler";
 

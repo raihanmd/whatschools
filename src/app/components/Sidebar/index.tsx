@@ -15,9 +15,9 @@ import {
   FiSettings,
 } from "react-icons/fi";
 
+import type { LinkItemProps } from "./types";
 import SidebarContent from "./SidebarContent";
 import MobileNav from "./MobileNav";
-import { LinkItemProps } from "./interfaces/Sidebar";
 import color from "@/config/color";
 
 const LinkItems: Array<LinkItemProps> = [

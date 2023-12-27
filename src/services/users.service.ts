@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 
-import type { LoginSchema, RegisterSchema } from "@/interfaces/users.interface";
+import type { LoginSchema, RegisterSchema } from "@/types/users.type";
 import { loginSchema, registerSchema } from "@/validation/usersSchema";
 import prisma from "@/connection/prisma";
 import ResponseError from "@/errors/responseError";

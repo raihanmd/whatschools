@@ -2,23 +2,23 @@ import { BoxProps, FlexProps } from "@chakra-ui/react";
 import { ReactText } from "react";
 import { IconType } from "react-icons";
 
-export interface LinkItemProps {
+export type LinkItemProps = {
   name: string;
   icon: IconType;
   href: string;
-}
+};
 
-export interface SidebarProps extends BoxProps {
+export type SidebarProps = BoxProps & {
   LinkItems: Array<LinkItemProps>;
   onClose: () => void;
-}
+};
 
-export interface MobileProps extends FlexProps {
+export type MobileProps = FlexProps & {
   onOpen: () => void;
-}
+};
 
-export interface NavItemProps extends FlexProps {
+export type NavItemProps = FlexProps & {
   icon: IconType;
   children: React.ReactNode;
   href: string;
-}
+};

@@ -1,16 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Rubik:wght@400;500;600&display=swap");
 
-.container {
-  background: #dadfee;
-  padding: 0 1rem;
-}
-
-@media screen and (max-width: 991px) {
-  .container {
-    padding: 0;
-  }
-}
-
 :root {
   --font-dm: "DM Sans", sans-serif;
   --font-rubik: "Rubik", sans-serif;

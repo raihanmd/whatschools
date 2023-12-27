@@ -21,10 +21,10 @@ import { FaWpforms } from "react-icons/fa";
 import { LuLogIn } from "react-icons/lu";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 
+import type { NavItem } from "./types";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
-import { NavItem } from "./interfaces";
-import appLogo from "../../../../public/app_logo.png";
+import appLogo from "../../../../../public/app_logo.png";
 import color from "@/config/color";
 import APP_CONFIG from "@/config/app";
 
@@ -32,10 +32,10 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box>
+    <Box zIndex={"10"}>
       <Flex
         bg={useColorModeValue(color.light.foreground, color.dark.foreground)}
-        py={"3"}
+        py={"4"}
         px={{ base: "5", xl: "20" }}
         shadow={"lg"}
         align={"center"}
@@ -48,8 +48,8 @@ export default function Navbar() {
               alt="App Logo"
               width={100}
               height={100}
-              w={"64px"}
-              h={"64px"}
+              w={"52px"}
+              h={"52px"}
             />
             <Flex direction={"column"}>
               <Heading fontSize={"md"}>{APP_CONFIG.APP_NAME}</Heading>

@@ -1,15 +1,16 @@
-import { Metadata } from "next";
+"use client";
 
-import Navbar from "../components/Navbar";
+import { Stack } from "@chakra-ui/react";
 
-export const metadata: Metadata = {
-  title: "PPDB Whatschool",
-};
+import color from "@/config/color";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 
 export default function page() {
   return (
-    <div className="container">
+    <Stack bg={color.primaryContent} px={{ base: "0", lg: "2" }}>
       <Navbar />
-    </div>
+      <Hero />
+    </Stack>
   );
 }
