@@ -27,6 +27,7 @@ import DesktopNav from "./DesktopNav";
 import appLogo from "../../../../../public/app_logo.png";
 import color from "@/config/color";
 import APP_CONFIG from "@/config/app";
+import ThemeToggler from "@/app/components/ThemeToggler";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -51,6 +52,7 @@ export default function Navbar() {
         <Flex flex={"1"} gap={"2"}>
           <Flex gap={"3"} align={"center"} w={"auto"}>
             <Image
+              placeholder="blur"
               src={appLogo}
               alt="App Logo"
               width={100}
@@ -99,7 +101,8 @@ export default function Navbar() {
           />
         </Flex>
 
-        <Stack display={{ base: "none", lg: "flex" }}>
+        <Stack display={{ base: "none", lg: "flex" }} direction={"row"}>
+          <ThemeToggler />
           <Link
             href={"/signin"}
             py={"2"}
@@ -120,7 +123,7 @@ export default function Navbar() {
             textAlign={"center"}
             gap={"2"}
           >
-            <Text>Masuk / Login</Text>
+            <Text>Masuk</Text>
             <Icon as={LuLogIn} />
           </Link>
         </Stack>
@@ -133,7 +136,7 @@ export default function Navbar() {
   );
 }
 
-export const NAV_ITEMS: Array<NavItem> = [
+const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Halaman Utama",
     href: "/ppdb",

@@ -32,7 +32,13 @@ export default function SidebarContent({
         color={useColorModeValue(color.primary, color.primary)}
       >
         <Link href={"/"}>
-          <Image src={appLogo} alt="App Logo" width={40} height={40} />
+          <Image
+            placeholder="blur"
+            src={appLogo}
+            alt="App Logo"
+            width={40}
+            height={40}
+          />
         </Link>
         <ThemeToggler />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />

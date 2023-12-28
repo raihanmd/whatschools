@@ -4,3 +4,15 @@
   --font-dm: "DM Sans", sans-serif;
   --font-rubik: "Rubik", sans-serif;
 }
+
+.ppdb_container {
+  /* This is the color.primaryContent */
+  background-color: #dadfee;
+  padding: 0 8px;
+}
+
+@media only screen and (max-width: 991px) {
+  .ppdb_container {
+    padding: 0;
+  }
+}

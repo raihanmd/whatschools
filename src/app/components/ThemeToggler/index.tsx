@@ -13,16 +13,16 @@ export default function ThemeToggler() {
       onClick={toggleColorMode}
       bg={"none"}
       _hover={{
-        background: color.primaryDark,
+        background: color.primaryLight,
       }}
       rounded={"full"}
       p={"1"}
       display={{ base: "none", md: "flex" }}
     >
       {colorMode === "light" ? (
-        <MoonIcon color={color.dark.text} />
+        <MoonIcon color={color.light.text} />
       ) : (
-        <SunIcon color={"yellow.300"} />
+        <SunIcon color={"yellow.400"} />
       )}
     </Button>
   );

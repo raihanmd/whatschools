@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Icon, Stack, Text } from "@chakra-ui/react";
+import { Box, Icon, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import { Link } from "@chakra-ui/next-js";
 import { usePathname } from "next/navigation";
 
@@ -22,7 +22,11 @@ export default function DesktopNav({ navItems }: { navItems: Array<NavItem> }) {
               href={navItem.href}
               fontSize={"sm"}
               fontWeight={500}
-              color={isActive ? color.primaryContent : color.primaryDark}
+              color={
+                isActive
+                  ? color.primaryContent
+                  : useColorModeValue(color.light.text, color.dark.text)
+              }
               display={"flex"}
               alignItems={"center"}
               gap={"2"}

@@ -8,11 +8,12 @@ import HeadLine from "./HeadLine";
 export default function Hero() {
   return (
     <Stack
+      pos={"relative"}
       maxW={"6xl"}
       mx={"auto"}
-      mt={"84px"}
+      pt={{ base: "124px", md: "164px" }}
+      pb={{ base: "10", md: "24" }}
       align={"center"}
-      py={{ base: "10", md: "20" }}
       gap={"10"}
       px={"10"}
       _before={{
@@ -22,8 +23,8 @@ export default function Hero() {
         width: "500px",
         height: "500px",
         borderRadius: "full",
-        top: "-200px",
-        left: "-200px",
+        top: "-250px",
+        left: "-250px",
       }}
       _after={{
         content: '""',
@@ -32,7 +33,7 @@ export default function Hero() {
         width: "200px",
         height: "200px",
         borderRadius: "full",
-        top: "510px",
+        bottom: "-40px",
         right: "40px",
       }}
     >

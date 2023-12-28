@@ -41,7 +41,13 @@ export default function MobileNav({ onOpen, ...rest }: MobileProps) {
       >
         <Link href={"/"}>
           <Flex justify={"center"} align={"center"} gap={"4"}>
-            <Image src={appLogo} alt="App Logo" width={40} height={40} />
+            <Image
+              placeholder="blur"
+              src={appLogo}
+              alt="App Logo"
+              width={40}
+              height={40}
+            />
             <Text
               fontSize={"xl"}
               fontWeight={"bold"}
