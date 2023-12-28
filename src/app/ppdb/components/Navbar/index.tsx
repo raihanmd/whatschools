@@ -32,7 +32,14 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box zIndex={"10"}>
+    <Box
+      pos={"fixed"}
+      top={"0"}
+      right={"0"}
+      w={"100%"}
+      zIndex={"30"}
+      px={{ base: "0", lg: "2" }}
+    >
       <Flex
         bg={useColorModeValue(color.light.foreground, color.dark.foreground)}
         py={"4"}
@@ -50,6 +57,7 @@ export default function Navbar() {
               height={100}
               w={"52px"}
               h={"52px"}
+              pointerEvents={"none"}
             />
             <Flex direction={"column"}>
               <Heading fontSize={"md"}>{APP_CONFIG.APP_NAME}</Heading>
@@ -112,7 +120,7 @@ export default function Navbar() {
             textAlign={"center"}
             gap={"2"}
           >
-            <Text>Masuk</Text>
+            <Text>Masuk / Login</Text>
             <Icon as={LuLogIn} />
           </Link>
         </Stack>
@@ -138,7 +146,7 @@ export const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: "Pendaftaran",
-    href: "/ppdb/pendaftaran",
+    href: "/ppdb/daftar",
     icon: FaWpforms,
   },
   {

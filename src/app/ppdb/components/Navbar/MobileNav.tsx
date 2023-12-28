@@ -8,7 +8,7 @@ import color from "@/config/color";
 
 export default function MobileNav({ navItems }: MobileNavProps) {
   return (
-    <Stack bg={color.primary} p={4} display={{ md: "none" }}>
+    <Stack bg={color.primary} p={4} display={{ lg: "none" }}>
       {navItems.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
