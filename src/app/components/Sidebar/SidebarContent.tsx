@@ -7,7 +7,7 @@ import { Link } from "@chakra-ui/next-js";
 import type { SidebarProps } from "./types";
 import color from "@/config/color";
 import NavItem from "./NavItem";
-import appLogo from "../../../../public/app_logo.png";
+import appLogo from "../../../../public/app_logo.webp";
 import ThemeToggler from "../ThemeToggler";
 
 export default function SidebarContent({
@@ -33,6 +33,7 @@ export default function SidebarContent({
       >
         <Link href={"/"}>
           <Image
+            className="rounded-logo"
             placeholder="blur"
             src={appLogo}
             alt="App Logo"

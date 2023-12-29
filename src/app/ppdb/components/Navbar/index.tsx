@@ -4,7 +4,6 @@ import {
   Box,
   Flex,
   IconButton,
-  Button,
   Stack,
   Collapse,
   useDisclosure,
@@ -13,8 +12,9 @@ import {
   Icon,
   Heading,
 } from "@chakra-ui/react";
+import Image from "next/image";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import { Image, Link } from "@chakra-ui/next-js";
+import { Link } from "@chakra-ui/next-js";
 import { PiBookBookmarkLight } from "react-icons/pi";
 import { LiaCommentsSolid } from "react-icons/lia";
 import { FaWpforms } from "react-icons/fa";
@@ -24,7 +24,7 @@ import { TfiHeadphoneAlt } from "react-icons/tfi";
 import type { NavItem } from "./types";
 import MobileNav from "./MobileNav";
 import DesktopNav from "./DesktopNav";
-import appLogo from "../../../../../public/app_logo.png";
+import appLogo from "../../../../../public/app_logo.webp";
 import color from "@/config/color";
 import APP_CONFIG from "@/config/app";
 import ThemeToggler from "@/app/components/ThemeToggler";
@@ -52,14 +52,12 @@ export default function Navbar() {
         <Flex flex={"1"} gap={"2"}>
           <Flex gap={"3"} align={"center"} w={"auto"}>
             <Image
+              className="rounded-logo"
               placeholder="blur"
               src={appLogo}
               alt="App Logo"
-              width={100}
-              height={100}
-              w={"52px"}
-              h={"52px"}
-              pointerEvents={"none"}
+              width={52}
+              height={52}
             />
             <Flex direction={"column"}>
               <Heading fontSize={"md"}>{APP_CONFIG.APP_NAME}</Heading>

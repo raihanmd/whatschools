@@ -1,10 +1,10 @@
 "use client";
 
-import { Image } from "@chakra-ui/next-js";
 import { Box, Flex, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 
 import BannerPPDB from "../../../../../public/PPDB_banner.webp";
 import color from "@/config/color";
+import Image from "next/image";
 
 export default function Blog() {
   return (
@@ -36,8 +36,7 @@ export default function Blog() {
           }}
         >
           <Image
-            borderRadius={"md"}
-            pointerEvents={"none"}
+            className="rounded-md"
             src={BannerPPDB}
             alt="Banner PPDB"
             placeholder="blur"

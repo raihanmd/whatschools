@@ -5,6 +5,18 @@
   --font-rubik: "Rubik", sans-serif;
 }
 
+img {
+  pointer-events: none;
+}
+
+.rounded-logo {
+  border-radius: 1rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .ppdb_container {
   /* This is the color.primaryContent */
   background-color: #dadfee;

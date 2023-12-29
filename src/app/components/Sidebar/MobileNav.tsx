@@ -7,7 +7,7 @@ import { Link } from "@chakra-ui/next-js";
 
 import type { MobileProps } from "./types";
 import color from "@/config/color";
-import appLogo from "../../../../public/app_logo.png";
+import appLogo from "../../../../public/app_logo.webp";
 import APP_CONFIG from "@/config/app";
 import ThemeToggler from "../ThemeToggler";
 
@@ -42,6 +42,7 @@ export default function MobileNav({ onOpen, ...rest }: MobileProps) {
         <Link href={"/"}>
           <Flex justify={"center"} align={"center"} gap={"4"}>
             <Image
+              className="rounded-logo"
               placeholder="blur"
               src={appLogo}
               alt="App Logo"
