@@ -7,7 +7,6 @@ import {
   Stack,
   Collapse,
   useDisclosure,
-  useColorModeValue,
   Text,
   Icon,
   Heading,
@@ -15,7 +14,7 @@ import {
 import Image from "next/image";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link } from "@chakra-ui/next-js";
-import { PiBookBookmarkLight } from "react-icons/pi";
+import { BsBookmarks } from "react-icons/bs";
 import { LiaCommentsSolid } from "react-icons/lia";
 import { FaWpforms } from "react-icons/fa";
 import { LuLogIn } from "react-icons/lu";
@@ -27,7 +26,6 @@ import DesktopNav from "./DesktopNav";
 import appLogo from "../../../../../public/app_logo.webp";
 import color from "@/config/color";
 import APP_CONFIG from "@/config/app";
-import ThemeToggler from "@/app/components/ThemeToggler";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -42,7 +40,7 @@ export default function Navbar() {
       px={{ base: "0", lg: "2" }}
     >
       <Flex
-        bg={useColorModeValue(color.light.foreground, color.dark.foreground)}
+        bg={color.light.foreground}
         py={"4"}
         px={{ base: "5", xl: "20" }}
         shadow={"lg"}
@@ -76,17 +74,11 @@ export default function Navbar() {
         <Flex display={{ base: "flex", lg: "none" }}>
           <IconButton
             onClick={onToggle}
-            bg={useColorModeValue(
-              color.light.foreground,
-              color.dark.foreground
-            )}
+            bg={color.light.foreground}
             _hover={{
-              background: useColorModeValue(
-                color.light.border,
-                color.dark.border
-              ),
+              background: color.light.border,
             }}
-            color={useColorModeValue(color.light.text, color.dark.text)}
+            color={color.light.text}
             icon={
               isOpen ? (
                 <CloseIcon w={"3"} h={"3"} />
@@ -100,7 +92,6 @@ export default function Navbar() {
         </Flex>
 
         <Stack display={{ base: "none", lg: "flex" }} direction={"row"}>
-          <ThemeToggler />
           <Link
             href={"/signin"}
             py={"2"}
@@ -121,7 +112,7 @@ export default function Navbar() {
             textAlign={"center"}
             gap={"2"}
           >
-            <Text>Masuk</Text>
+            <Text>Masuk / Login</Text>
             <Icon as={LuLogIn} />
           </Link>
         </Stack>
@@ -138,7 +129,7 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Halaman Utama",
     href: "/ppdb",
-    icon: PiBookBookmarkLight,
+    icon: BsBookmarks,
   },
   {
     label: "Informasi",
