@@ -4,6 +4,7 @@ export type NavItem = {
   label: string;
   icon: IconType;
   href: string;
+  target?: string;
 };
 
 export type DesktopNavProps = {

@@ -136,7 +136,8 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: "Kontak Panitia",
-    href: "/ppdb/kontak",
+    href: "https://wa.me/6289606007128",
+    target: "_blank",
     icon: TfiHeadphoneAlt,
   },
 ];

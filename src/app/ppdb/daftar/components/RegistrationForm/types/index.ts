@@ -5,7 +5,6 @@ export type FormStepperProps = {
 
 export type Step = {
   label: string;
-  description: string;
 };
 
 type InputField = {
@@ -15,6 +14,8 @@ type InputField = {
   name?: string;
   options?: Array<string>;
   description?: string;
+  withAddon?: boolean;
+  addOn?: string;
 };
 
 export type InputFields = InputField & {

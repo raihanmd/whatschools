@@ -8,14 +8,17 @@ import { FormStepperProps } from "./types";
 
 export default function FormStepper({ activeStep, step }: FormStepperProps) {
   return (
-    <Stack w={{ base: "sm", md: "xl" }} mx={"auto"}>
-      <Steps activeStep={activeStep}>
+    <Stack w={"full"} mx={"auto"}>
+      <Steps
+        activeStep={activeStep}
+        orientation="horizontal"
+        responsive={true}
+        variant={"circles-alt"}
+        mobileBreakpoint={"sm"}
+        expandVerticalSteps={false}
+      >
         {step.map((step) => (
-          <Step
-            key={step.label}
-            label={step.label}
-            description={step.description}
-          />
+          <Step key={step.label} label={step.label} />
         ))}
       </Steps>
     </Stack>

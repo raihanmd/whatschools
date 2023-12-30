@@ -8,7 +8,7 @@ import Header from "./components/Header";
 
 export default function page() {
   return (
-    <Stack bg={color.light.background} gap={"0"}>
+    <Stack gap={"0"}>
       <Header />
       <RegistrationForm />
     </Stack>

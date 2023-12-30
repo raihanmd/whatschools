@@ -7,7 +7,8 @@ import { Button, Flex, Stack } from "@chakra-ui/react";
 import type { Step } from "./types";
 import FormStepper from "./FormStepper";
 import color from "@/config/color";
-import InputField from "./InputField";
+import PersonalField from "./PersonalField";
+import SchoolField from "./SchoolField";
 import ConfirmationForm from "./ConfirmationForm";
 
 export default function RegistrationForm() {
@@ -15,10 +16,26 @@ export default function RegistrationForm() {
     initialStep: 0,
   });
 
+  let stepComponent;
+
+  switch (activeStep) {
+    case 0:
+      stepComponent = <PersonalField />;
+      break;
+    case 1:
+      stepComponent = <SchoolField />;
+      break;
+    case 2:
+      stepComponent = <ConfirmationForm />;
+      break;
+    default:
+      stepComponent = null;
+  }
+
   return (
     <Stack p={"5"} bg={color.light.foreground}>
       <FormStepper activeStep={activeStep} step={STEPS} />
-      {activeStep === 0 ? <InputField /> : <ConfirmationForm />}
+      {stepComponent}
       <Flex justify={"end"} align={"center"} gap={"3"}>
         <Button
           isDisabled={activeStep === 0}
@@ -30,7 +47,7 @@ export default function RegistrationForm() {
           Prev
         </Button>
         <Button
-          isDisabled={activeStep === 2}
+          isDisabled={activeStep === STEPS.length}
           bg={color.utility.success.background}
           color={color.utility.success.content}
           _hover={{ bg: color.utility.success.background }}
@@ -45,11 +62,12 @@ export default function RegistrationForm() {
 
 const STEPS: Array<Step> = [
   {
-    label: "Isi Biodata",
-    description: "Lengkapi Biodata",
+    label: "Isi Data Diri",
+  },
+  {
+    label: "Informasi Sekolah Sebelumnya",
   },
   {
     label: "Konfirmasi Data",
-    description: "Pastikan Data Benar",
   },
 ];

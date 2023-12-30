@@ -23,6 +23,7 @@ export default function DesktopNav({ navItems }: { navItems: Array<NavItem> }) {
               fontSize={"sm"}
               fontWeight={500}
               color={isActive ? color.primaryContent : color.light.text}
+              target={navItem?.target || "_self"}
               display={"flex"}
               alignItems={"center"}
               gap={"2"}
