@@ -72,7 +72,7 @@ export default function MyStep() {
             align={"center"}
             textAlign={"center"}
           >
-            <Heading as="h3" fontSize={"lg"} color={color.light.text}>
+            <Heading as="p" fontSize={"lg"} color={color.light.text}>
               {step.title}
             </Heading>
             <Text color={color.light.textLighter} fontSize={"sm"}>

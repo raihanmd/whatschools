@@ -1,24 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { Link } from "@chakra-ui/next-js";
 import {
   Box,
   Flex,
   Heading,
   Icon,
-  List,
-  ListIcon,
-  ListItem,
   Stack,
-  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { MdCheckCircle } from "react-icons/md";
-import { ChevronRightIcon } from "@chakra-ui/icons";
+import { SiGoogleforms } from "react-icons/si";
 
+import APP_CONFIG from "@/config/app";
 import BannerPPDB from "../../../../../public/PPDB_banner.webp";
+import appLogo from "../../../../../public/app_logo.webp";
 import color from "@/config/color";
+import Terms from "./Terms";
+import Rating from "@/app/components/Rating";
+import FloatingCard from "./FloatingCard";
+import { Link } from "@chakra-ui/next-js";
 
 export default function Blog() {
   return (
@@ -53,6 +53,45 @@ export default function Blog() {
             position: "absolute",
           }}
         >
+          <FloatingCard top={"5rem"} left={"-7rem"}>
+            <Box
+              p={"4"}
+              bg={color.primaryContent}
+              color={color.primary}
+              rounded={"full"}
+              fontSize={"lg"}
+            >
+              <SiGoogleforms />
+            </Box>
+            <Box w={"9rem"} textAlign={"center"}>
+              <Heading fontSize={"md"}>
+                Klik untuk{" "}
+                <Heading
+                  as={Link}
+                  href={"/ppdb/daftar"}
+                  fontSize={"md"}
+                  color={color.primary}
+                >
+                  Daftar
+                </Heading>{" "}
+                Siswa
+              </Heading>
+            </Box>
+          </FloatingCard>
+          <FloatingCard bottom={"5rem"} right={"-7rem"}>
+            <Image
+              placeholder="blur"
+              src={appLogo}
+              alt="App Logo"
+              width={52}
+              height={52}
+              className="rounded-logo"
+            />
+            <Flex direction={"column"} gap={"1"}>
+              <Heading fontSize={"md"}>{APP_CONFIG.APP_NAME}</Heading>
+              <Rating rating={5} />
+            </Flex>
+          </FloatingCard>
           <Image
             className="rounded-md"
             src={BannerPPDB}
@@ -62,55 +101,7 @@ export default function Blog() {
             height={565}
           />
         </Stack>
-        <Flex justify={"center"} align={"start"} direction={"column"} gap={"5"}>
-          <Heading as={"h3"} size={"xl"} color={color.light.text}>
-            Syarat{" "}
-            <Heading as="span" color={color.primary}>
-              Pendaftaran
-            </Heading>
-          </Heading>
-          <List spacing={"3"}>
-            <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.500" />
-              Memiliki Akta Kelahiran
-            </ListItem>
-            <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.500" />
-              KTP dan KK orang tua
-            </ListItem>
-            <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.500" />
-              Memiliki ijazan SMP / Sederajat
-            </ListItem>
-            <ListItem>
-              <ListIcon as={MdCheckCircle} color="green.500" />
-              Surat keterangan Sehat
-            </ListItem>
-          </List>
-          <Link
-            href={"/ppdb/daftar"}
-            py={"2"}
-            px={"4"}
-            fontSize={"sm"}
-            rounded={"5px"}
-            variant={"solid"}
-            fontWeight={"semibold"}
-            color={color.primaryContent}
-            bg={color.primary}
-            _hover={{
-              bg: color.primaryDark,
-              textDecoration: "none",
-            }}
-            display={"flex"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            textAlign={"center"}
-            gap={"2"}
-          >
-            <Text>Daftar siswa baru</Text>
-            <Icon fontSize={"xl"} as={ChevronRightIcon} />
-          </Link>
-        </Flex>
+        <Terms />
       </Flex>
     </Stack>
   );

@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@prisma/client": "^5.7.1",
     "bcrypt": "^5.1.1",
+    "chakra-ui-steps": "^2.1.0",
     "framer-motion": "^10.16.16",
     "next": "^14.0.4",
     "next-auth": "^4.24.5",

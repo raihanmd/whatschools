@@ -11,8 +11,7 @@ export default function Hero() {
       pos={"relative"}
       maxW={"6xl"}
       mx={"auto"}
-      pt={{ base: "124px", md: "164px" }}
-      pb={{ base: "10", md: "24" }}
+      py={{ base: "10", md: "24" }}
       align={"center"}
       gap={"10"}
       px={"10"}

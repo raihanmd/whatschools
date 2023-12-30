@@ -1,5 +1,7 @@
 /* theme.ts */
 import { extendTheme } from "@chakra-ui/react";
+//@ts-ignore
+import { StepsTheme as Steps } from "chakra-ui-steps";
 
 export const theme = extendTheme({
   fonts: {
@@ -9,5 +11,8 @@ export const theme = extendTheme({
   config: {
     initialColorMode: "light",
     useSystemColorMode: true,
+  },
+  components: {
+    Steps,
   },
 });

@@ -44,7 +44,9 @@ export default function DesktopNav({ navItems }: { navItems: Array<NavItem> }) {
                   as={navItem.icon}
                 />
               ) : null}
-              <Text transition={"all 50ms"}>{navItem.label}</Text>
+              <Text fontWeight={"body"} transition={"all 50ms"}>
+                {navItem.label}
+              </Text>
             </Link>
           </Box>
         );

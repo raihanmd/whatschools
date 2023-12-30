@@ -31,14 +31,7 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box
-      pos={"fixed"}
-      top={"0"}
-      right={"0"}
-      w={"100%"}
-      zIndex={"30"}
-      px={{ base: "0", lg: "2" }}
-    >
+    <Box pos={"sticky"} top={"0"} right={"0"} w={"100%"} zIndex={"30"}>
       <Flex
         bg={color.light.foreground}
         py={"4"}
