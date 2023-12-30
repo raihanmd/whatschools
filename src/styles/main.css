@@ -21,6 +21,7 @@ img {
   /* This is the color.primaryContent */
   background-color: #dadfee;
   padding: 0 8px;
+  min-height: 100svh;
 }
 
 @media only screen and (max-width: 991px) {
