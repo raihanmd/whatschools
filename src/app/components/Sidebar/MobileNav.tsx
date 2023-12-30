@@ -46,8 +46,8 @@ export default function MobileNav({ onOpen, ...rest }: MobileProps) {
               placeholder="blur"
               src={appLogo}
               alt="App Logo"
-              width={40}
-              height={40}
+              width={52}
+              height={52}
             />
             <Text
               fontSize={"xl"}

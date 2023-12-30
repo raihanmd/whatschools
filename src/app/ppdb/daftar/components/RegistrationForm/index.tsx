@@ -5,7 +5,7 @@ import { useSteps } from "chakra-ui-steps";
 import { Button, Flex, Stack } from "@chakra-ui/react";
 
 import type { Step } from "./types";
-import FormStepper from "./FormStepper";
+import FormStepper from "./FormField/FormStepper";
 import color from "@/config/color";
 import PersonalField from "./PersonalField";
 import SchoolField from "./SchoolField";
@@ -33,7 +33,15 @@ export default function RegistrationForm() {
   }
 
   return (
-    <Stack p={"5"} bg={color.light.foreground}>
+    <Stack
+      p={"5"}
+      bg={color.light.foreground}
+      maxW={"7xl"}
+      minW={{ base: "full", md: "3xl" }}
+      mx={"auto"}
+      gap={"5"}
+      rounded={"xl"}
+    >
       <FormStepper activeStep={activeStep} step={STEPS} />
       {stepComponent}
       <Flex justify={"end"} align={"center"} gap={"3"}>
@@ -62,10 +70,10 @@ export default function RegistrationForm() {
 
 const STEPS: Array<Step> = [
   {
-    label: "Isi Data Diri",
+    label: "Isi Biodata Diri",
   },
   {
-    label: "Informasi Sekolah Sebelumnya",
+    label: "Sekolah Sebelumnya",
   },
   {
     label: "Konfirmasi Data",

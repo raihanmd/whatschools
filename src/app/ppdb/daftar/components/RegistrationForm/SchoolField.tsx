@@ -1,11 +1,7 @@
-"use client";
+import type { FormElement } from "./types";
+import FormFieldContainer from "./FormField/FormFieldContainer";
 
-import { Stack } from "@chakra-ui/react";
-
-import { InputFields } from "./types";
-import generateFormControl from "@/utils/generateFormControl";
-
-const INPUT_FIELDS: Array<InputFields> = [
+const INPUT_FIELDS: Array<FormElement> = [
   {
     label: "Unit Pendidikan Sebelumnya",
     type: "select",
@@ -26,37 +22,8 @@ const INPUT_FIELDS: Array<InputFields> = [
     name: "sekolahAsal",
     placeholder: "Mts Negeri 1 Jakarta",
   },
-  {
-    isMerged: true,
-    fields: [
-      {
-        label: "Kata Sandi Akun",
-        type: "password",
-        name: "kataSandi",
-        placeholder: "Kata Sandi Akun",
-      },
-      {
-        label: "Konfirmasi Kata Sandi",
-        type: "password",
-        name: "konfirmasiKataSandi",
-        placeholder: "Tulis Ulang Kata Sandi Akun",
-      },
-    ],
-  },
 ];
 
 export default function SchoolField() {
-  return (
-    <Stack as="form">
-      {INPUT_FIELDS.map((input, i) =>
-        input.isMerged ? (
-          <Stack key={i} direction={{ base: "column", md: "row" }}>
-            {input?.fields?.map((subInput) => generateFormControl(subInput))}
-          </Stack>
-        ) : (
-          generateFormControl(input)
-        )
-      )}
-    </Stack>
-  );
+  return <FormFieldContainer inputFields={INPUT_FIELDS} />;
 }

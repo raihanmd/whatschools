@@ -37,8 +37,8 @@ export default function SidebarContent({
             placeholder="blur"
             src={appLogo}
             alt="App Logo"
-            width={40}
-            height={40}
+            width={52}
+            height={52}
           />
         </Link>
         <ThemeToggler />

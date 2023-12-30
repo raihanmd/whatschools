@@ -1,15 +1,11 @@
-"use client";
+import type { FormElement } from "./types";
+import FormFieldContainer from "./FormField/FormFieldContainer";
 
-import { Stack } from "@chakra-ui/react";
-
-import { InputFields } from "./types";
-import generateFormControl from "@/utils/generateFormControl";
-
-const INPUT_FIELDS: Array<InputFields> = [
+const INPUT_FIELDS: Array<FormElement> = [
   {
     label: "Nama Lengkap",
     type: "text",
-    placeholder: "Nama lengkap anda",
+    placeholder: "Nama Lengkap Anda",
     name: "name",
   },
   {
@@ -25,7 +21,7 @@ const INPUT_FIELDS: Array<InputFields> = [
       {
         label: "Tempat Lahir",
         type: "text",
-        placeholder: "Tempat lahir anda",
+        placeholder: "Tempat Lahir Anda",
         name: "tempatLahir",
       },
       {
@@ -60,17 +56,5 @@ const INPUT_FIELDS: Array<InputFields> = [
 ];
 
 export default function PersonalField() {
-  return (
-    <Stack as="form">
-      {INPUT_FIELDS.map((input, i) =>
-        input.isMerged ? (
-          <Stack key={i} direction={{ base: "column", md: "row" }}>
-            {input?.fields?.map((subInput) => generateFormControl(subInput))}
-          </Stack>
-        ) : (
-          generateFormControl(input)
-        )
-      )}
-    </Stack>
-  );
+  return <FormFieldContainer inputFields={INPUT_FIELDS} />;
 }

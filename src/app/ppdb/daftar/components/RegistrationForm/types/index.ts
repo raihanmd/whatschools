@@ -1,13 +1,8 @@
-export type FormStepperProps = {
-  activeStep: number;
-  step: Array<Step>;
-};
-
 export type Step = {
   label: string;
 };
 
-type InputField = {
+export type FormField = {
   label?: string;
   type?: string;
   placeholder?: string;
@@ -18,7 +13,7 @@ type InputField = {
   addOn?: string;
 };
 
-export type InputFields = InputField & {
+export type FormElement = FormField & {
   isMerged?: boolean;
-  fields?: Array<InputField>;
+  fields?: Array<FormField>;
 };
