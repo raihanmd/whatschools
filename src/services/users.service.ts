@@ -2,15 +2,16 @@ import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 
 import type { LoginSchema, RegisterSchema } from "@/types/users.type";
-import { loginSchema, registerSchema } from "@/validation/usersSchema";
 import prisma from "@/connection/prisma";
 import ResponseError from "@/errors/responseError";
 import getUnixTime from "@/utils/getUnixTime";
 import getUuid from "@/utils/getUuid";
 import PREFIX from "@/config/prefix";
+import validator from "@/validation/validator";
+import { loginSchema, registerSchema } from "@/validation/usersSchema";
 
 const login = async (req: LoginSchema) => {
-  const loginBody = loginSchema.parse(req);
+  const loginBody = await validator(loginSchema, req);
 
   const user = await prisma.users.findFirst({
     where: { username: req.username },
@@ -45,7 +46,7 @@ const login = async (req: LoginSchema) => {
 };
 
 const register = async (req: RegisterSchema) => {
-  const registerBody = registerSchema.parse(req);
+  const registerBody = await validator(registerSchema, req);
 
   const countUser = await prisma.users.count({
     where: {

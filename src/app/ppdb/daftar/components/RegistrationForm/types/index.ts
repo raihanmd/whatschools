@@ -17,3 +17,7 @@ export type FormElement = FormField & {
   isMerged?: boolean;
   fields?: Array<FormField>;
 };
+
+export type FieldProps = {
+  activeStep: number;
+};

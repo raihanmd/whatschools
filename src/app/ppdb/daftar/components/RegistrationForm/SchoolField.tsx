@@ -1,5 +1,6 @@
-import type { FormElement } from "./types";
+import type { FieldProps, FormElement } from "./types";
 import FormFieldContainer from "./FormField/FormFieldContainer";
+import { Stack } from "@chakra-ui/react";
 
 const INPUT_FIELDS: Array<FormElement> = [
   {
@@ -24,6 +25,10 @@ const INPUT_FIELDS: Array<FormElement> = [
   },
 ];
 
-export default function SchoolField() {
-  return <FormFieldContainer inputFields={INPUT_FIELDS} />;
+export default function SchoolField({ activeStep }: FieldProps) {
+  return (
+    <Stack display={activeStep === 1 ? "block" : "none"}>
+      <FormFieldContainer inputFields={INPUT_FIELDS} />;
+    </Stack>
+  );
 }

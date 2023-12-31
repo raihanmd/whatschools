@@ -16,22 +16,6 @@ export default function RegistrationForm() {
     initialStep: 0,
   });
 
-  let stepComponent;
-
-  switch (activeStep) {
-    case 0:
-      stepComponent = <PersonalField />;
-      break;
-    case 1:
-      stepComponent = <SchoolField />;
-      break;
-    case 2:
-      stepComponent = <ConfirmationForm />;
-      break;
-    default:
-      stepComponent = null;
-  }
-
   return (
     <Stack
       p={"5"}
@@ -43,7 +27,11 @@ export default function RegistrationForm() {
       rounded={"xl"}
     >
       <FormStepper activeStep={activeStep} step={STEPS} />
-      {stepComponent}
+      <form action={(e: FormData) => console.log(e.get("nama"))}>
+        <PersonalField activeStep={activeStep} />
+        <SchoolField activeStep={activeStep} />
+        <ConfirmationForm activeStep={activeStep} />
+      </form>
       <Flex justify={"end"} align={"center"} gap={"3"}>
         <Button
           isDisabled={activeStep === 0}
@@ -52,7 +40,7 @@ export default function RegistrationForm() {
           _hover={{ bg: color.utility.error.background }}
           onClick={() => prevStep()}
         >
-          Prev
+          Kembali
         </Button>
         <Button
           isDisabled={activeStep === STEPS.length}
@@ -61,7 +49,7 @@ export default function RegistrationForm() {
           _hover={{ bg: color.utility.success.background }}
           onClick={() => nextStep()}
         >
-          Next
+          Lanjut
         </Button>
       </Flex>
     </Stack>

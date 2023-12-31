@@ -1,12 +1,13 @@
-import type { FormElement } from "./types";
+import type { FieldProps, FormElement } from "./types";
 import FormFieldContainer from "./FormField/FormFieldContainer";
+import { Stack } from "@chakra-ui/react";
 
 const INPUT_FIELDS: Array<FormElement> = [
   {
     label: "Nama Lengkap",
     type: "text",
     placeholder: "Nama Lengkap Anda",
-    name: "name",
+    name: "nama",
   },
   {
     isMerged: true,
@@ -55,6 +56,10 @@ const INPUT_FIELDS: Array<FormElement> = [
   },
 ];
 
-export default function PersonalField() {
-  return <FormFieldContainer inputFields={INPUT_FIELDS} />;
+export default function PersonalField({ activeStep }: FieldProps) {
+  return (
+    <Stack display={activeStep === 0 ? "block" : "none"}>
+      <FormFieldContainer inputFields={INPUT_FIELDS} />;
+    </Stack>
+  );
 }

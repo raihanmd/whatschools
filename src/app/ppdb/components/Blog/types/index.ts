@@ -1,7 +1,5 @@
-export type FloatingCardProps = {
-  top?: string;
-  bottom?: string;
-  right?: string;
-  left?: string;
+import { FlexProps } from "@chakra-ui/react";
+
+export type FloatingCardProps = FlexProps & {
   children: React.ReactNode;
 };

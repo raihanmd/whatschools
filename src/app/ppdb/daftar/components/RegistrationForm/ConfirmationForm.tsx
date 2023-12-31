@@ -1,5 +1,6 @@
-import type { FormElement } from "./types";
+import type { FieldProps, FormElement } from "./types";
 import FormFieldContainer from "./FormField/FormFieldContainer";
+import { Button, Stack } from "@chakra-ui/react";
 
 const INPUT_FIELDS: Array<FormElement> = [
   {
@@ -21,6 +22,11 @@ const INPUT_FIELDS: Array<FormElement> = [
   },
 ];
 
-export default function ConfirmationForm() {
-  return <FormFieldContainer inputFields={INPUT_FIELDS} />;
+export default function ConfirmationForm({ activeStep }: FieldProps) {
+  return (
+    <Stack display={activeStep === 2 ? "block" : "none"}>
+      <FormFieldContainer inputFields={INPUT_FIELDS} />;
+      <Button type="submit">Test</Button>
+    </Stack>
+  );
 }
