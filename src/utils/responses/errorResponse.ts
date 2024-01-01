@@ -1,7 +1,11 @@
-import ResponseError from "@/errors/responseError";
 import { NextResponse } from "next/server";
 
-const ErrorResponse = ({ statusCode, error }: ResponseError) => {
+interface IErrorResponse {
+  statusCode: number;
+  error: any;
+}
+
+const ErrorResponse = ({ statusCode, error }: IErrorResponse) => {
   return NextResponse.json(
     {
       status_code: statusCode,

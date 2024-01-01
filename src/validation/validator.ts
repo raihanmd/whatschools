@@ -1,7 +1,7 @@
 import ResponseError from "@/errors/responseError";
-import { Schema } from "yup";
+import { AnySchema } from "yup";
 
-export default async function validator(schema: Schema, data: any) {
+export default async function validator(schema: AnySchema, data: any) {
   try {
     return await schema.validate(data, { strict: true, abortEarly: false });
   } catch (error: any) {

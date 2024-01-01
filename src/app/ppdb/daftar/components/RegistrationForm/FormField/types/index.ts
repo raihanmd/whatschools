@@ -1,4 +1,5 @@
-import { FormElement, Step } from "../../types";
+import { UseFormRegister } from "react-hook-form";
+import { FormElement, Inputs, Step } from "../../types";
 
 export type FormInputProps = {
   input: FormElement;

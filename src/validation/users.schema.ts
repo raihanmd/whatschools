@@ -3,10 +3,12 @@ import * as yup from "yup";
 import type { LoginSchema, RegisterSchema } from "@/types/users.type";
 import UserRole from "@/enums/UserRole";
 
-export const loginSchema: yup.Schema<LoginSchema> = yup
+export const loginSchema: yup.ObjectSchema<LoginSchema> = yup
   .object({
     username: yup.string().max(50).required("Username tidak boleh kosong"),
-    password: yup.string().max(255).required("Password tidak boleh kosong"),
+    password: yup.string().required("Password tidak boleh kosong"),
+    token: yup.string().optional(),
+    last_login: yup.number().optional(),
   })
   .strict()
   .noUnknown(
@@ -14,7 +16,7 @@ export const loginSchema: yup.Schema<LoginSchema> = yup
     (field) => `Field [${field.unknown.toString()}] tidak diperbolehkan`
   );
 
-export const registerSchema: yup.Schema<RegisterSchema> = yup.object({
+export const registerSchema: yup.ObjectSchema<RegisterSchema> = yup.object({
   username: yup
     .string()
     .min(5, "Username minimal 5 karakter")
@@ -37,4 +39,7 @@ export const registerSchema: yup.Schema<RegisterSchema> = yup.object({
     .mixed<UserRole>()
     .oneOf(Object.values(UserRole), "Role tidak valid")
     .required("Role tidak boleh kosong"),
+  id: yup.string().optional(),
+  created_at: yup.number().optional(),
+  last_login: yup.number().optional(),
 });

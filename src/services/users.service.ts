@@ -8,7 +8,7 @@ import getUnixTime from "@/utils/getUnixTime";
 import getUuid from "@/utils/getUuid";
 import PREFIX from "@/config/prefix";
 import validator from "@/validation/validator";
-import { loginSchema, registerSchema } from "@/validation/usersSchema";
+import { loginSchema, registerSchema } from "@/validation/users.schema";
 
 const login = async (req: LoginSchema) => {
   const loginBody = await validator(loginSchema, req);
