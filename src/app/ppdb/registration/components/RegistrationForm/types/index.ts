@@ -1,5 +1,6 @@
-import { daftarSchema } from "@/validation/ppdb.schema";
-import { UseFormRegister } from "react-hook-form";
+import { RegistrationSchema } from "@/types/ppdb.type";
+import { registrationSchema } from "@/validation/ppdb.schema";
+import { IconType } from "react-icons";
 import { InferType } from "yup";
 
 export type Step = {
@@ -16,7 +17,7 @@ export type FormField = {
   options?: Array<string>;
   description?: string;
   withAddon?: boolean;
-  addOn?: string;
+  addOnIcon?: IconType;
 };
 
 export type FormElement = FormField & {
@@ -28,6 +29,6 @@ export type FieldProps = {
   fields: Array<FormElement>;
 };
 
-export type Inputs = InferType<typeof daftarSchema>;
+export type Inputs = InferType<typeof registrationSchema>;
 
-export type FieldName = keyof Inputs;
+export type FieldName = keyof RegistrationSchema;

@@ -2,19 +2,20 @@
 
 // @ts-ignore
 import { useSteps } from "chakra-ui-steps";
-import { useEffect } from "react";
 import { Button, Flex, Stack } from "@chakra-ui/react";
-import { useForm, SubmitHandler, useWatch } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { FaWhatsapp } from "react-icons/fa";
 
 import type { FieldName, Inputs, Step } from "./types";
-import FormStepper from "./FormField/FormStepper";
+import { registrationSchema } from "@/validation/ppdb.schema";
+import { RegistrationProvider } from "../../contexts/RegistrationProvider";
 import color from "@/config/color";
-import PersonalField from "./PersonalField";
-import SchoolField from "./SchoolField";
-import ConfirmationForm from "./ConfirmationForm";
-import { daftarSchema } from "@/validation/ppdb.schema";
-import { RegisterProvider } from "../../contexts/RegisterProvider";
+import FormStepper from "./FormField/FormStepper";
+import StepOne from "./StepOne";
+import StepTwo from "./StepTwo";
+import StepThree from "./StepThree";
+import StepFour from "./StepFour";
 
 export default function RegistrationForm() {
   const { nextStep, prevStep, activeStep } = useSteps({
@@ -27,19 +28,21 @@ export default function RegistrationForm() {
     reset,
     trigger,
     formState: { errors },
-  } = useForm<Inputs>({ resolver: yupResolver(daftarSchema) });
+  } = useForm<Inputs>({
+    resolver: yupResolver(registrationSchema),
+    mode: "onChange",
+  });
 
   const next = async () => {
     const fields = STEPS[activeStep].reactHookForm;
     const output = await trigger(fields as FieldName[], { shouldFocus: true });
 
-    console.log(output);
-
     if (!output) return;
 
-    if (activeStep < STEPS.length - 1) {
+    if (activeStep < STEPS.length) {
       if (activeStep === 2) {
         await handleSubmit(processForm)();
+        return nextStep();
       }
       nextStep();
     }
@@ -60,20 +63,23 @@ export default function RegistrationForm() {
 
   switch (activeStep) {
     case 0:
-      stepComponent = <PersonalField fields={STEPS[0].fields} />;
+      stepComponent = <StepOne fields={STEPS[0].fields} />;
       break;
     case 1:
-      stepComponent = <SchoolField fields={STEPS[1].fields} />;
+      stepComponent = <StepTwo fields={STEPS[1].fields} />;
       break;
     case 2:
-      stepComponent = <ConfirmationForm fields={STEPS[2].fields} />;
+      stepComponent = <StepThree fields={STEPS[2].fields} />;
+      break;
+    case 3:
+      stepComponent = <StepFour />;
       break;
     default:
       stepComponent = null;
   }
 
   return (
-    <RegisterProvider register={register} errors={errors}>
+    <RegistrationProvider register={register} errors={errors}>
       <Stack
         p={"5"}
         bg={color.light.foreground}
@@ -82,31 +88,41 @@ export default function RegistrationForm() {
         mx={"auto"}
         gap={"5"}
         rounded={"xl"}
+        shadow={"lg"}
+        zIndex={"10"}
       >
         <FormStepper activeStep={activeStep} step={STEPS} />
         <form onSubmit={handleSubmit(processForm)}>{stepComponent}</form>
         <Flex justify={"end"} align={"center"} gap={"3"}>
           <Button
             isDisabled={activeStep === 0}
-            bg={color.utility.error.background}
-            color={color.utility.error.content}
-            _hover={{ bg: color.utility.error.background }}
+            display={activeStep === STEPS.length ? "none" : "block"}
+            bg={color.light.foreground}
+            border={"1px"}
+            borderColor={color.primary}
+            color={color.primary}
+            _hover={{
+              bg: color.light.background,
+              color: color.primaryDark,
+              borderColor: color.primaryDark,
+            }}
             onClick={() => prev()}
           >
             Kembali
           </Button>
           <Button
             isDisabled={activeStep === STEPS.length}
-            bg={color.utility.success.background}
-            color={color.utility.success.content}
-            _hover={{ bg: color.utility.success.background }}
+            display={activeStep === STEPS.length ? "none" : "block"}
+            bg={color.primary}
+            color={color.primaryContent}
+            _hover={{ bg: color.primaryDark }}
             onClick={() => next()}
           >
-            Lanjut
+            {activeStep === STEPS.length - 1 ? "Selesai" : "Lanjut"}
           </Button>
         </Flex>
       </Stack>
-    </RegisterProvider>
+    </RegistrationProvider>
   );
 }
 
@@ -172,11 +188,11 @@ const STEPS: Array<Step> = [
             label: "Nomor Telepon / Whatsapp",
             type: "number",
             name: "no_hp",
-            placeholder: "Contoh: 89606xxxxxx",
+            placeholder: "Contoh: 6281234567890",
             description:
               "Pastikan nomor telepon / Whatsapp yang didaftarkan aktif dan dapat dihubungi",
             withAddon: true,
-            addOn: "+62",
+            addOnIcon: FaWhatsapp,
           },
         ],
       },
@@ -210,7 +226,7 @@ const STEPS: Array<Step> = [
   },
   {
     label: "Konfirmasi Data",
-    reactHookForm: ["password"],
+    reactHookForm: ["password", "password_confirm"],
     fields: [
       {
         isMerged: true,

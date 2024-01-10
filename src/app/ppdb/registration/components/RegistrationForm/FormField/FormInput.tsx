@@ -3,8 +3,6 @@
 import {
   FormControl,
   FormLabel,
-  InputGroup,
-  InputLeftAddon,
   Input,
   Select,
   FormHelperText,
@@ -12,10 +10,11 @@ import {
 } from "@chakra-ui/react";
 
 import type { FormInputProps } from "./types";
-import { useRegister } from "../../../contexts/RegisterProvider";
+import { useRegistration } from "../../../contexts/RegistrationProvider";
+import color from "@/config/color";
 
 const FormInput = ({ input }: FormInputProps) => {
-  const { register, errors } = useRegister();
+  const { register, errors } = useRegistration();
 
   return (
     <FormControl
@@ -29,6 +28,8 @@ const FormInput = ({ input }: FormInputProps) => {
         <Select
           //@ts-ignore
           {...register(input.name as string)}
+          variant="flushed"
+          focusBorderColor={color.primary}
           placeholder={input.placeholder}
           name={input.name}
         >
@@ -39,18 +40,15 @@ const FormInput = ({ input }: FormInputProps) => {
           ))}
         </Select>
       ) : (
-        <InputGroup>
-          {input.withAddon ? (
-            <InputLeftAddon>{input.addOn}</InputLeftAddon>
-          ) : null}
-          <Input
-            //@ts-ignore
-            {...register(input.name as string)}
-            type={input.type}
-            placeholder={input.placeholder}
-            name={input.name}
-          />
-        </InputGroup>
+        <Input
+          //@ts-ignore
+          {...register(input.name as string)}
+          variant="flushed"
+          focusBorderColor={color.primary}
+          type={input.type}
+          placeholder={input.placeholder}
+          name={input.name}
+        />
       )}
       {
         //@ts-ignore

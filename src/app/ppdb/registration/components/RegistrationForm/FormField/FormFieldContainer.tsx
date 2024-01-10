@@ -7,7 +7,7 @@ import type { FormFieldContainerProps } from "./types";
 
 const FormFieldContainer = ({ inputFields }: FormFieldContainerProps) => {
   return (
-    <Stack>
+    <Stack rowGap={"5"}>
       {inputFields.map((input, i) =>
         input.isMerged ? (
           <Stack key={i} direction={{ base: "column", md: "row" }}>
