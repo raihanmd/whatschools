@@ -1,12 +1,11 @@
 import * as yup from "yup";
 
 import JenisKelamin from "@/enums/ppdb/JenisKelamin";
-import { DaftarSchema } from "@/types/ppdb.type";
 import Agama from "@/enums/ppdb/Agama";
 import UnitPendidikan from "@/enums/ppdb/UnitPendidikan";
 import JenisPendaftaran from "@/enums/ppdb/JenisPendaftaran";
 
-export const daftarSchema: yup.ObjectSchema<DaftarSchema> = yup.object({
+export const registrationSchema = yup.object({
   nama_lengkap: yup
     .string()
     .min(3, "Nama minimal 3 huruf")
@@ -23,9 +22,18 @@ export const daftarSchema: yup.ObjectSchema<DaftarSchema> = yup.object({
     .oneOf(Object.values(Agama), "Agama tidak valid")
     .required("Agama tidak boleh kosong"),
   no_hp: yup
-    .number()
-    .typeError("No. HP harus berupa angka")
-    .integer("No. HP harus berupa angka")
+    .string()
+    .typeError("No. HP tidak boleh kosong")
+    .test(
+      "startsWithEight",
+      "No. HP harus diawali dengan 62 Contoh 628123xxx",
+      function (value) {
+        if (!value) return true;
+
+        return value.toString().startsWith("62");
+      }
+    )
+    .matches(/^628\d{8,14}$/, "No. HP tidak valid")
     .required("No. HP tidak boleh kosong"),
   unit_pendidikan: yup
     .mixed<UnitPendidikan>()
@@ -38,6 +46,17 @@ export const daftarSchema: yup.ObjectSchema<DaftarSchema> = yup.object({
   asal_sekolah: yup.string().required("Asal Sekolah tidak boleh kosong"),
   password: yup
     .string()
-    .min(8, "password minimal 8 karakter")
+    .min(8, "Password minimal 8 karakter")
+    .matches(/^(?=.*[a-z])/, "Password harus mengandung huruf kecil")
+    .matches(/^(?=.*[A-Z])/, "Password harus mengandung huruf kapital")
+    .matches(/^(?=.*[0-9])/, "Password harus mengandung angka")
     .required("Password tidak boleh kosong"),
+  password_confirm: yup
+    .string()
+    .min(8, "Password minimal 8 karakter")
+    .matches(/^(?=.*[a-z])/, "Password harus mengandung huruf kecil")
+    .matches(/^(?=.*[A-Z])/, "Password harus mengandung huruf kapital")
+    .matches(/^(?=.*[0-9])/, "Password harus mengandung angka")
+    .oneOf([yup.ref("password")], "Password harus sama")
+    .required(),
 });

@@ -14,5 +14,23 @@ export const theme = extendTheme({
   },
   components: {
     Steps,
+    Input: {
+      baseStyle: {
+        field: {
+          padding: "0 10px",
+          _autofill: {
+            boxShadow: "0 0 0px 1000px transparent inset",
+            transition: "background-color 5000s ease-in-out 0s",
+          },
+        },
+      },
+    },
+    Select: {
+      baseStyle: {
+        field: {
+          padding: "0 10px",
+        },
+      },
+    },
   },
 });
